@@ -1,0 +1,27 @@
+def process_upis_passwords(list_upis_passwords):
+    input1 = input("Enter 1 to add a new user or 2 to remove an existing user: ")
+
+    if input1 == "1":
+        new = input("Enter the upi to add: ")
+        new_p = input("Enter the password to add: ")
+        if new in list_upis_passwords[0]:
+            print("This upi is already used")
+        else:
+            list_upis_passwords[1].append(new_p)
+            list_upis_passwords[0].append(new)
+        
+    elif input1 == "2":
+        new1 = input("Enter the upi to remove: ")
+        new_p2 = input("Enter the password to remove: ")
+        if new1 in list_upis_passwords[0] and new_p2 in list_upis_passwords[1]:
+            index1 = list_upis_passwords[0].index(new1)
+            index2 = list_upis_passwords[1].index(new_p2)
+            if index1 == index2:
+                list_upis_passwords[0].remove(new1)
+                list_upis_passwords[1].remove(new_p2)
+            else:
+                print("Invalid upi/password pair")
+        else:
+            print("Invalid upi/password pair")
+
+    return list_upis_passwords
